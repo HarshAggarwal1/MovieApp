@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_poster">Image Poster</string>
+    <string name="movie_title">Movie Title</string>
+</resources>
