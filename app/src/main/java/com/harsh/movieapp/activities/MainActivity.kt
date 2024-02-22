@@ -1,4 +1,4 @@
-package com.harsh.movieapp
+package com.harsh.movieapp.activities
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.harsh.movieapp.R
 import com.harsh.movieapp.databinding.ActivityMainBinding
 import com.harsh.movieapp.view.MovieAdapter
 import com.harsh.movieapp.viewmodel.MovieViewModel
@@ -28,7 +29,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge()
-        val mainBinding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val mainBinding: ActivityMainBinding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main
+        )
         applyWindowInsets(mainBinding)
 
         viewModel = ViewModelProvider(this)[MovieViewModel::class.java]
