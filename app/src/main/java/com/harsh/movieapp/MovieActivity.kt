@@ -36,9 +36,9 @@ class MovieActivity: AppCompatActivity() {
         val movieLayout: MovieLayout = MovieLayout()
         movieLayout.setPosterPath(posterPath!!)
         movieLayout.setTitle(title!!)
+        movieLayout.setOverview(overview!!)
         movieLayout.setReleaseDate(releaseDate!!)
         movieLayout.setAdult(adult!!)
-        movieLayout.setOverview(overview!!)
         movieLayout.setVoteAverage(voteAverage!!)
         movieLayout.setOriginalLanguage(originalLanguage!!)
         movieLayout.setPopularity(popularity!!)
@@ -50,8 +50,6 @@ class MovieActivity: AppCompatActivity() {
             .load("https://image.tmdb.org/t/p/w500${movieLayout.getPosterPath()}")
             .into(movieBinding.mvPoster)
 
-        val menu: Menu = movieBinding.mvToolbar.menu
-        menu.findItem(R.id.rating).title = "${((movieLayout.getVoteAverage() * 10.0).toInt()).toDouble() / 10.0} / 10"
     }
     private fun applyWindowInsets(mainBinding: ActivityMovieBinding) {
         ViewCompat.setOnApplyWindowInsetsListener(mainBinding.movieLayout) { v, insets ->

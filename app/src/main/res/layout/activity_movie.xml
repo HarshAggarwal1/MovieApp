@@ -46,52 +46,296 @@
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         app:layout_collapseMode="pin"
-                        app:menu="@menu/collapsing_app_bar"
                         app:title="@{movieLayout.title}" />
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
             </com.google.android.material.appbar.AppBarLayout>
-            <com.google.android.material.card.MaterialCardView
+            <androidx.core.widget.NestedScrollView
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                app:cardElevation="2dp"
-                app:cardCornerRadius="30dp"
-                android:layout_margin="10dp"
-                android:padding="10dp">
+                android:fillViewport="true">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/mvTitle"
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{movieLayout.title}"
-                        android:textAppearance="@style/MainTitleAppearance"
-                        android:layout_marginBottom="10dp" />
-                    <TextView
-                        android:id="@+id/mvOverview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{movieLayout.overview}"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                        android:layout_marginBottom="10dp" />
-                    <TextView
-                        android:id="@+id/mvReleaseDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{movieLayout.releaseDate}"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_marginBottom="10dp" />
-                    <TextView
-                        android:id="@+id/mvRating"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{`` + movieLayout.voteAverage}"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_marginBottom="10dp" />
+                        app:cardElevation="2dp"
+                        app:cardCornerRadius="30dp"
+                        android:layout_margin="10dp"
+                        android:padding="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/mvTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:padding="5dp"
+                                android:text="@{movieLayout.title}"
+                                android:textAppearance="@style/MainTitleAppearance"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp" />
+                            <com.google.android.material.divider.MaterialDivider
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:dividerInsetStart="16dp"
+                                app:dividerInsetEnd="16dp"/>
+                            <TextView
+                                android:id="@+id/mvOverview"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:padding="5dp"
+                                android:text="@{movieLayout.overview}"
+                                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                                android:layout_marginBottom="10dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="2dp"
+                            app:cardCornerRadius="30dp"
+                            android:layout_margin="10dp"
+                            android:padding="10dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="15dp"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="24dp"
+                                            android:layout_height="24dp"
+                                            android:src="@drawable/star"
+                                            android:contentDescription="@string/rating"/>
+                                        <TextView
+                                            android:id="@+id/mvRating"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:text="@string/rating"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                                    </LinearLayout>
+                                    <TextView
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="@{String.valueOf(Character.toChars(0x2B50)) + `  ` + Double.toString((double) ((int) (movieLayout.voteAverage * 10)) / 10.0) + `  /  10`}" />
+                                </LinearLayout>
+                                <com.google.android.material.divider.MaterialDivider
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:dividerInsetStart="16dp"
+                                    app:dividerInsetEnd="16dp"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="24dp"
+                                            android:layout_height="24dp"
+                                            android:src="@drawable/star"
+                                            android:contentDescription="@string/release_date"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:text="@string/release_date"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                                    </LinearLayout>
+                                    <TextView
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="@{movieLayout.releaseDate}" />
+                                </LinearLayout>
+                                <com.google.android.material.divider.MaterialDivider
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:dividerInsetStart="16dp"
+                                    app:dividerInsetEnd="16dp"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="24dp"
+                                            android:layout_height="24dp"
+                                            android:src="@drawable/star"
+                                            android:contentDescription="@string/adult"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:text="@string/adult"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                                    </LinearLayout>
+                                    <TextView
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="@{movieLayout.adult ? String.valueOf(`Yes`) : String.valueOf(`No`)}" />
+                                </LinearLayout>
+                                <com.google.android.material.divider.MaterialDivider
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:dividerInsetStart="16dp"
+                                    app:dividerInsetEnd="16dp"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="24dp"
+                                            android:layout_height="24dp"
+                                            android:src="@drawable/star"
+                                            android:contentDescription="@string/original_language"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:text="@string/original_language"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                                    </LinearLayout>
+                                    <TextView
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="@{movieLayout.originalLanguage}" />
+                                </LinearLayout>
+                                <com.google.android.material.divider.MaterialDivider
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:dividerInsetStart="16dp"
+                                    app:dividerInsetEnd="16dp"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="24dp"
+                                            android:layout_height="24dp"
+                                            android:src="@drawable/star"
+                                            android:contentDescription="@string/popularity"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:text="@string/popularity"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                                    </LinearLayout>
+                                    <TextView
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="@{String.valueOf(movieLayout.popularity)}" />
+                                </LinearLayout>
+                                <com.google.android.material.divider.MaterialDivider
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:dividerInsetStart="16dp"
+                                    app:dividerInsetEnd="16dp"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:orientation="horizontal">
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:padding="5dp"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal">
+                                        <ImageView
+                                            android:layout_width="24dp"
+                                            android:layout_height="24dp"
+                                            android:src="@drawable/star"
+                                            android:contentDescription="@string/vote_count"/>
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="5dp"
+                                            android:text="@string/vote_count"
+                                            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                                    </LinearLayout>
+                                    <TextView
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:padding="5dp"
+                                        android:text="@{String.valueOf(movieLayout.voteCount)}" />
+                                </LinearLayout>
+                            </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.core.widget.NestedScrollView>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

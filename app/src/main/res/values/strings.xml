@@ -9,4 +9,10 @@
     <string name="popular">Popular</string>
     <string name="top_rated">Top Rated</string>
     <string name="now_playing">Now Playing</string>
+    <string name="rating">Rating</string>
+    <string name="release_date">Release Date</string>
+    <string name="adult">Adult</string>
+    <string name="original_language">Original Language</string>
+    <string name="popularity">Popularity</string>
+    <string name="vote_count">Vote Count</string>
 </resources>
