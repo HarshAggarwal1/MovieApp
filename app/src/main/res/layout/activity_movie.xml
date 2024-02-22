@@ -126,11 +126,6 @@
                                         android:padding="5dp"
                                         android:layout_weight="1"
                                         android:orientation="horizontal">
-                                        <ImageView
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:src="@drawable/star"
-                                            android:contentDescription="@string/rating"/>
                                         <TextView
                                             android:id="@+id/mvRating"
                                             android:layout_width="wrap_content"
@@ -164,11 +159,6 @@
                                         android:padding="5dp"
                                         android:layout_weight="1"
                                         android:orientation="horizontal">
-                                        <ImageView
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:src="@drawable/star"
-                                            android:contentDescription="@string/release_date"/>
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -201,11 +191,6 @@
                                         android:padding="5dp"
                                         android:layout_weight="1"
                                         android:orientation="horizontal">
-                                        <ImageView
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:src="@drawable/star"
-                                            android:contentDescription="@string/adult"/>
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -238,11 +223,6 @@
                                         android:padding="5dp"
                                         android:layout_weight="1"
                                         android:orientation="horizontal">
-                                        <ImageView
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:src="@drawable/star"
-                                            android:contentDescription="@string/original_language"/>
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -275,11 +255,6 @@
                                         android:padding="5dp"
                                         android:layout_weight="1"
                                         android:orientation="horizontal">
-                                        <ImageView
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:src="@drawable/star"
-                                            android:contentDescription="@string/popularity"/>
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -312,11 +287,6 @@
                                         android:padding="5dp"
                                         android:layout_weight="1"
                                         android:orientation="horizontal">
-                                        <ImageView
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:src="@drawable/star"
-                                            android:contentDescription="@string/vote_count"/>
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
