@@ -46,10 +46,14 @@ class MovieActivity: AppCompatActivity() {
 
         movieBinding.setMovieLayout(movieLayout)
 
-        Glide.with(this)
-            .load("https://image.tmdb.org/t/p/w500${movieLayout.getPosterPath()}")
-            .into(movieBinding.mvPoster)
-
+        try {
+            Glide.with(this)
+                .load("https://image.tmdb.org/t/p/w500${movieLayout.getPosterPath()}")
+                .into(movieBinding.mvPoster)
+        }
+        catch (e: Exception) {
+            movieBinding.mvPoster.setImageResource(R.drawable.ic_launcher_foreground)
+        }
     }
     private fun applyWindowInsets(mainBinding: ActivityMovieBinding) {
         ViewCompat.setOnApplyWindowInsetsListener(mainBinding.movieLayout) { v, insets ->

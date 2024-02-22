@@ -41,7 +41,12 @@ class Movie : BaseObservable() {
         @JvmStatic
         @BindingAdapter("posterPath")
         fun loadImage(view: ImageView, url: String) {
-            Glide.with(view.context).load("https://image.tmdb.org/t/p/w500$url").into(view)
+            try {
+                Glide.with(view.context).load("https://image.tmdb.org/t/p/w500$url").into(view)
+            }
+            catch (e: Exception) {
+                view.setImageResource(com.harsh.movieapp.R.drawable.ic_launcher_foreground)
+            }
         }
     }
     @SerializedName("release_date")
