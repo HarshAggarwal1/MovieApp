@@ -15,17 +15,32 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MoviePagingSource(private val movieApiService: MovieApiService, private val application: Application): PagingSource<Int, Movie>() {
+class MoviePagingSource(private val movieApiService: MovieApiService, private val application: Application, private val type: Int): PagingSource<Int, Movie>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         try {
             val position: Int = params.key ?: 1
             val result = withContext(Dispatchers.IO) {
                 try {
-                    val call = movieApiService.getPopularMovies(
-                        application.applicationContext.getString(R.string.api_key),
-                        position
-                    )
+                    lateinit var call: Call<Result>
+                    when (type) {
+                        1 -> call = movieApiService.getPopularMovies(
+                            application.applicationContext.getString(R.string.api_key),
+                            position
+                        )
+                        2 -> call = movieApiService.getTopRatedMovies(
+                            application.applicationContext.getString(R.string.api_key),
+                            position
+                        )
+                        3 -> call = movieApiService.getUpcomingMovies(
+                            application.applicationContext.getString(R.string.api_key),
+                            position
+                        )
+                        4 -> call = movieApiService.getNowPlayingMovies(
+                            application.applicationContext.getString(R.string.api_key),
+                            position
+                        )
+                    }
                     val response = call.execute()
                     if (response.isSuccessful) {
                         response.body() ?: Result(1, emptyList(), 1, 1)

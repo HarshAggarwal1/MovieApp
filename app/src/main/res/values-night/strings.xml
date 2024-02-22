@@ -2,4 +2,8 @@
 <resources>
     <string name="image_poster">Image Poster</string>
     <string name="movie_title">Movie Title</string>
+    <string name="the_movie_database">The Movie Database</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
 </resources>

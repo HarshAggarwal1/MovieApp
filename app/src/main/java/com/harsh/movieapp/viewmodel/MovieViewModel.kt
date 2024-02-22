@@ -11,7 +11,7 @@ import com.harsh.movieapp.repository.MovieRepo
 
 class MovieViewModel(application: Application) : AndroidViewModel(application) {
     private val movieRepo: MovieRepo = MovieRepo(application)
-    fun getMovies(): LiveData<PagingData<Movie>> {
-        return movieRepo.getMutableLiveData().cachedIn(viewModelScope)
+    fun getMovies(type: Int): LiveData<PagingData<Movie>> {
+        return movieRepo.getMutableLiveData(type).cachedIn(viewModelScope)
     }
 }

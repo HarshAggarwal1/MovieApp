@@ -3,7 +3,15 @@
     <style name="Base.Theme.MovieApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:textColorPrimary">@color/dark_gray</item>
     </style>
 
-    <style name="Theme.MovieApp" parent="Base.Theme.MovieApp" />
+    <style name="Theme.MovieApp" parent="Base.Theme.MovieApp">
+    </style>
+
+    <style name="MainTitleAppearance">
+        <item name="android:fontFamily">@font/anton_regular</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
 </resources>

@@ -2,6 +2,13 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MovieApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<!--         <item name="colorPrimary">@color/my_dark_primary</item>-->
+        <item name="android:textColorPrimary">@color/light_gray</item>
+    </style>
+
+    <style name="MainTitleAppearance">
+        <item name="android:fontFamily">@font/anton_regular</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/light_gray</item>
     </style>
 </resources>

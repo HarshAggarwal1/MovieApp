@@ -3,31 +3,61 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" >
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foregroundGravity="center"
         tools:context=".MainActivity">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:foregroundGravity="center">
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <com.google.android.material.appbar.AppBarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/appbarLayout">
+                    <com.google.android.material.appbar.MaterialToolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        app:title="@string/the_movie_database"
+                        app:titleCentered="true"
+                        app:titleTextAppearance="@style/MainTitleAppearance"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+                </com.google.android.material.appbar.AppBarLayout>
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/recyclerView"
-                    android:layout_margin="5dp"
-                    android:padding="5dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
                     android:clipToPadding="false"
-
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
+                <com.google.android.material.bottomappbar.BottomAppBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.Material3.BottomAppBar"
+                    android:layout_gravity="bottom"
+                    android:foregroundGravity="center_horizontal|bottom"
+                    app:contentInsetStart="0dp"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetRight="0dp"
+                    android:id="@+id/bottomAppBar">
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:menu="@menu/bottom_app_bar"
+                        app:labelVisibilityMode="labeled"
+                        android:background="@android:color/transparent"
+                        android:id="@+id/bottomNavigationView" />
+                </com.google.android.material.bottomappbar.BottomAppBar>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

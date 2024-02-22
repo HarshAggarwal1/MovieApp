@@ -18,12 +18,12 @@ import retrofit2.Callback
 class MovieRepo(private val application: Application) {
     private val movieApiService: MovieApiService = RetrofitInstance.getService()
 
-    fun getMutableLiveData(): LiveData<PagingData<Movie>> = Pager(
+    fun getMutableLiveData(type: Int): LiveData<PagingData<Movie>> = Pager(
         config = PagingConfig(
             pageSize = 20,
             maxSize = 100,
             enablePlaceholders = false
         ),
-        pagingSourceFactory = { MoviePagingSource(movieApiService, application) }
+        pagingSourceFactory = { MoviePagingSource(movieApiService, application, type) }
     ).liveData
 }

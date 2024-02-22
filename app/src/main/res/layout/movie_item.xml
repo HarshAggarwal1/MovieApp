@@ -13,8 +13,8 @@
         android:orientation="vertical">
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/mvCardView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             app:cardElevation="5dp"
             app:cardCornerRadius="10dp"
             android:shadowColor="@color/black"
@@ -40,7 +40,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:text="@{String.valueOf(Character.toChars(0x2B50)) + ` ` + Double.toString(movie.voteAverage) + `/10`}"
+                    android:text="@{String.valueOf(Character.toChars(0x2B50)) + ` ` + Double.toString((double) ((int) (movie.voteAverage * 10)) / 10.0) + `/10`}"
                     android:textColor="@color/white"
                     android:layout_alignParentTop="true"
                     android:background="#77000000"
