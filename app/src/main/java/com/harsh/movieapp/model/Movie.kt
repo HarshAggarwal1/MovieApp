@@ -40,7 +40,7 @@ class Movie : BaseObservable() {
     companion object {
         @JvmStatic
         @BindingAdapter("posterPath")
-        fun loadImage(view: ImageView, url: String) {
+        fun loadImage(view: ImageView, url: String?) {
             try {
                 Glide.with(view.context).load("https://image.tmdb.org/t/p/w500$url").into(view)
             }

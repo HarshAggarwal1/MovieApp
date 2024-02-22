@@ -34,7 +34,7 @@ class MovieActivity: AppCompatActivity() {
         val voteCount: Int? = bundle?.getInt("voteCount")
 
         val movieLayout: MovieLayout = MovieLayout()
-        movieLayout.setPosterPath(posterPath!!)
+        movieLayout.setPosterPath(posterPath)
         movieLayout.setTitle(title!!)
         movieLayout.setOverview(overview!!)
         movieLayout.setReleaseDate(releaseDate!!)

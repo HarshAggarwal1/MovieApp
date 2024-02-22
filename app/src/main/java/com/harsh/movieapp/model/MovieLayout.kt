@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 
 class MovieLayout: BaseObservable() {
 
-    private var posterPath: String = ""
+    private var posterPath: String? = ""
     private var title: String = ""
     private var releaseDate: String = ""
     private var adult: Boolean = false
@@ -19,10 +19,10 @@ class MovieLayout: BaseObservable() {
     private var voteCount: Int = 0
 
     @Bindable
-    fun getPosterPath(): String {
+    fun getPosterPath(): String? {
         return posterPath
     }
-    fun setPosterPath(posterPath: String) {
+    fun setPosterPath(posterPath: String?) {
         this.posterPath = posterPath
         notifyPropertyChanged(com.harsh.movieapp.BR.posterPath)
     }
