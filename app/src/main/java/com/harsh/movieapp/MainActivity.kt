@@ -33,12 +33,21 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[MovieViewModel::class.java]
 
-        getMovies(mainBinding)
+        getMovies(mainBinding, 3)
+
+        bottomNavigationView = mainBinding.bottomNavigationView
 
         swipeRefreshLayout = mainBinding.main
         swipeRefreshLayout.setColorSchemeResources(R.color.magenta)
         swipeRefreshLayout.setOnRefreshListener {
-            getMovies(mainBinding)
+            val type: Int = when (bottomNavigationView.selectedItemId) {
+                R.id.popular -> 1
+                R.id.top_rated -> 2
+                R.id.upcoming -> 3
+                R.id.now_playing -> 4
+                else -> 3
+            }
+            getMovies(mainBinding, type)
             swipeRefreshLayout.isRefreshing = false
         }
 
@@ -69,7 +78,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        bottomNavigationView = mainBinding.bottomNavigationView
         bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.popular -> {
@@ -93,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getMovies(mainBinding: ActivityMainBinding, type: Int = 1) {
+    private fun getMovies(mainBinding: ActivityMainBinding, type: Int ) {
         viewModel.getMovies(type).observe(this
         ) {
             movieAdapter = MovieAdapter()
@@ -114,7 +122,7 @@ class MainActivity : AppCompatActivity() {
     private fun applyWindowInsets(mainBinding: ActivityMainBinding) {
         ViewCompat.setOnApplyWindowInsetsListener(mainBinding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
     }

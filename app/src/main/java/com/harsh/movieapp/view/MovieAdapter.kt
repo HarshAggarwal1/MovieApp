@@ -1,6 +1,8 @@
 package com.harsh.movieapp.view
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -9,6 +11,7 @@ import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.harsh.movieapp.MovieActivity
 import com.harsh.movieapp.R
 import com.harsh.movieapp.databinding.MovieItemBinding
 import com.harsh.movieapp.model.Movie
@@ -20,7 +23,19 @@ class MovieAdapter(): PagingDataAdapter<Movie, MovieAdapter.MovieViewHolder>(COM
         init {
             movieItemBinding.root.setOnClickListener {
                 val movie = movieItemBinding.movie
-                Toast.makeText(it.context, "You clicked " + movie!!.getTitle(), Toast.LENGTH_SHORT).show()
+                val bundle: Bundle = Bundle()
+                bundle.putString("posterPath", movie?.getPosterPath())
+                bundle.putString("title", movie?.getTitle())
+                bundle.putString("releaseDate", movie?.getReleaseDate())
+                bundle.putBoolean("adult", movie?.getAdult()!!)
+                bundle.putString("overview", movie.getOverview())
+                bundle.putDouble("voteAverage", movie.getVoteAverage())
+                bundle.putString("originalLanguage", movie.getOriginalLanguage())
+                bundle.putDouble("popularity", movie.getPopularity())
+                bundle.putInt("voteCount", movie.getVoteCount())
+                val intent: Intent = Intent(movieItemBinding.root.context, MovieActivity::class.java)
+                intent.putExtras(bundle)
+                movieItemBinding.root.context.startActivity(intent)
             }
         }
     }

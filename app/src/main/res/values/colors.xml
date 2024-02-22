@@ -5,4 +5,5 @@
     <color name="magenta">#FF00FF00</color>
     <color name="light_gray">#FFAEACAC</color>
     <color name="dark_gray">#FF6E6E6E</color>
+    <color name="image_layer">#88000000</color>
 </resources>
