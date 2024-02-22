@@ -174,4 +174,7 @@ class Movie : BaseObservable() {
         return voteCount
     }
 
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
 }

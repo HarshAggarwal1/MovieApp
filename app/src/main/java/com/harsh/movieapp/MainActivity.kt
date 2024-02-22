@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,6 @@ import com.harsh.movieapp.view.MovieAdapter
 import com.harsh.movieapp.viewmodel.MovieViewModel
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var movies: List<Movie>
     private lateinit var movieAdapter: MovieAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun getMovies(mainBinding: ActivityMainBinding) {
         viewModel.getMovies().observe(this
-        ) { moviesFromLiveDate ->
-            movies = moviesFromLiveDate as List<Movie>
-            movieAdapter = MovieAdapter(this, movies)
+        ) {
+            movieAdapter = MovieAdapter()
+            movieAdapter.submitData(lifecycle, it)
             recyclerView = mainBinding.recyclerView
             recyclerView.adapter = movieAdapter
 

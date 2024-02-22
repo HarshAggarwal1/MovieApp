@@ -66,4 +66,12 @@ dependencies {
     // glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
+
+    // dagger2
+    implementation("com.google.dagger:dagger:2.50")
+    kapt("com.google.dagger:dagger-compiler:2.50")
+
+    // paging library
+    val pagingVersion = "3.2.1"
+    implementation("androidx.paging:paging-runtime:$pagingVersion")
 }
