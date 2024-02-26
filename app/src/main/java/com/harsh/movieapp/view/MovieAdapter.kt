@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.harsh.movieapp.activities.MovieActivity
+import com.harsh.movieapp.MovieActivity
 import com.harsh.movieapp.R
 import com.harsh.movieapp.databinding.MovieItemBinding
 import com.harsh.movieapp.model.Movie
@@ -26,7 +26,7 @@ class MovieAdapter(): PagingDataAdapter<Movie, MovieAdapter.MovieViewHolder>(COM
                 bundle.putString("releaseDate", movie?.getReleaseDate())
                 bundle.putBoolean("adult", movie?.getAdult()!!)
                 bundle.putString("overview", movie.getOverview())
-                bundle.putDouble("voteAverage", movie.getVoteAverage())
+                bundle.putString("voteAverage", movie.getVoteAverage())
                 bundle.putString("originalLanguage", movie.getOriginalLanguage())
                 bundle.putDouble("popularity", movie.getPopularity())
                 bundle.putInt("voteCount", movie.getVoteCount())

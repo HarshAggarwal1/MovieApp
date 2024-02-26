@@ -40,10 +40,10 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:text="@{String.valueOf(Character.toChars(0x2B50)) + ` ` + Double.toString((double) ((int) (movie.voteAverage * 10)) / 10.0) + `/10`}"
+                    android:text="@{String.valueOf(Character.toChars(0x2B50)) + ` ` + movie.voteAverage}"
                     android:textColor="@color/white"
                     android:layout_alignParentTop="true"
-                    android:background="#77000000"
+                    android:background="#99000000"
                     android:layout_gravity="center" />
                 <TextView
                     android:id="@+id/mvTitle"
@@ -55,7 +55,7 @@
                     android:text="@{movie.title}"
                     android:textColor="@color/white"
                     android:layout_alignParentBottom="true"
-                    android:background="#77000000"
+                    android:background="#99000000"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center" />
             </RelativeLayout>

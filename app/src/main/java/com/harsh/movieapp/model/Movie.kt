@@ -171,8 +171,12 @@ class Movie : BaseObservable() {
         return video
     }
     @Bindable
-    fun getVoteAverage(): Double {
-        return voteAverage
+    fun getVoteAverage(): String {
+        return if (voteAverage == 0.0) {
+            "Unrated"
+        } else {
+            "${((voteAverage * 10).toInt()).toDouble() / 10.0} / 10"
+        }
     }
     @Bindable
     fun getVoteCount(): Int {

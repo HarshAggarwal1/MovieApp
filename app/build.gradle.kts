@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("kapt") version "1.9.22"
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -10,10 +11,10 @@ android {
 
     defaultConfig {
         applicationId = "com.harsh.movieapp"
-        minSdk = 30
+        minSdk = 29
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -74,4 +75,14 @@ dependencies {
     // paging library
     val pagingVersion = "3.2.1"
     implementation("androidx.paging:paging-runtime:$pagingVersion")
+
+    // admob
+    implementation("com.google.android.gms:play-services-ads:22.6.0")
+
+    // firebase
+//    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+//    implementation("com.google.firebase:firebase-analytics")
+
+    // app integrity
+    implementation("com.google.android.play:integrity:1.3.0")
 }

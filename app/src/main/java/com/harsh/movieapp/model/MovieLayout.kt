@@ -13,7 +13,7 @@ class MovieLayout: BaseObservable() {
     private var releaseDate: String = ""
     private var adult: Boolean = false
     private var overview: String = ""
-    private var voteAverage: Double = 0.0
+    private var voteAverage: String = "Unrated"
     private var originalLanguage: String = ""
     private var popularity: Double = 0.0
     private var voteCount: Int = 0
@@ -64,10 +64,10 @@ class MovieLayout: BaseObservable() {
     }
 
     @Bindable
-    fun getVoteAverage(): Double {
+    fun getVoteAverage(): String {
         return voteAverage
     }
-    fun setVoteAverage(voteAverage: Double) {
+    fun setVoteAverage(voteAverage: String) {
         this.voteAverage = voteAverage
         notifyPropertyChanged(com.harsh.movieapp.BR.voteAverage)
     }

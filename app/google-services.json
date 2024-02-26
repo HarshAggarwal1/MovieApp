@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "165316713809",
+    "project_id": "moviedatabase-14916",
+    "storage_bucket": "moviedatabase-14916.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165316713809:android:41051f5c073337e7028770",
+        "android_client_info": {
+          "package_name": "com.harsh.movieapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzQZBmqf9Jg4mkOGa8UXmg2Dz_rLHgzGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
