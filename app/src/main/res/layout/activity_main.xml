@@ -30,7 +30,24 @@
                     app:titleTextAppearance="@style/MainTitleAppearance"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+                <com.google.android.material.search.SearchBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/searchBar"
+                    android:hint="@string/search_movie" />
             </com.google.android.material.appbar.AppBarLayout>
+            <com.google.android.material.search.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/search_movie"
+                app:layout_anchor="@id/searchBar">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recyclerViewSearchView"
+                    android:layout_margin="5dp" />
+            </com.google.android.material.search.SearchView>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

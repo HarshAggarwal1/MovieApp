@@ -23,21 +23,26 @@ import com.harsh.movieapp.model.Movie
 class MovieAdapter(): PagingDataAdapter<Movie, MovieAdapter.MovieViewHolder>(COMPARATOR) {
 
 
-    class MovieViewHolder(val movieItemBinding: MovieItemBinding, context: Context) : RecyclerView.ViewHolder(movieItemBinding.root) {
+    class MovieViewHolder(val movieItemBinding: MovieItemBinding, context: Context) :
+        RecyclerView.ViewHolder(movieItemBinding.root) {
         init {
             // Interstitial Ad
             val adRequest = AdRequest.Builder().build()
             var mInterstitialAd: InterstitialAd? = null
-            InterstitialAd.load(context,"ca-app-pub-5316532507620289/8265128479", adRequest, object : InterstitialAdLoadCallback() {
-                override fun onAdFailedToLoad(adError: LoadAdError) {
+            InterstitialAd.load(
+                context,
+                "ca-app-pub-5316532507620289/8265128479",
+                adRequest,
+                object : InterstitialAdLoadCallback() {
+                    override fun onAdFailedToLoad(adError: LoadAdError) {
 //                    adError.toString().let { Log.d("Interstitial Ad Error", it) }
-                    mInterstitialAd = null
-                }
+                        mInterstitialAd = null
+                    }
 
-                override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                    mInterstitialAd = interstitialAd
-                }
-            })
+                    override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                        mInterstitialAd = interstitialAd
+                    }
+                })
 
             movieItemBinding.root.setOnClickListener {
                 val movie = movieItemBinding.movie
@@ -51,7 +56,8 @@ class MovieAdapter(): PagingDataAdapter<Movie, MovieAdapter.MovieViewHolder>(COM
                 bundle.putString("originalLanguage", movie.getOriginalLanguage())
                 bundle.putDouble("popularity", movie.getPopularity())
                 bundle.putInt("voteCount", movie.getVoteCount())
-                val intent: Intent = Intent(movieItemBinding.root.context, MovieActivity::class.java)
+                val intent: Intent =
+                    Intent(movieItemBinding.root.context, MovieActivity::class.java)
                 intent.putExtras(bundle)
                 movieItemBinding.root.context.startActivity(intent)
 
@@ -68,7 +74,8 @@ class MovieAdapter(): PagingDataAdapter<Movie, MovieAdapter.MovieViewHolder>(COM
             LayoutInflater.from(parent.context),
             R.layout.movie_item,
             parent,
-            false)
+            false
+        )
         return MovieViewHolder(movieItemBinding, parent.context)
     }
 
@@ -76,16 +83,15 @@ class MovieAdapter(): PagingDataAdapter<Movie, MovieAdapter.MovieViewHolder>(COM
         val movie = getItem(position)
         holder.movieItemBinding.movie = movie
     }
-}
 
-object COMPARATOR : DiffUtil.ItemCallback<Movie>() {
-    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-        return oldItem.getId() == newItem.getId()
+    private object COMPARATOR : DiffUtil.ItemCallback<Movie>() {
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+            return oldItem.getId() == newItem.getId()
+        }
+
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+            return oldItem == newItem
+        }
+
     }
-
-    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-        return oldItem == newItem
-    }
-
 }
-

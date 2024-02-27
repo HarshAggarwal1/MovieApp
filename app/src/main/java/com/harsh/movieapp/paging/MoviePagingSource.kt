@@ -15,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MoviePagingSource(private val movieApiService: MovieApiService, private val application: Application, private val type: Int): PagingSource<Int, Movie>() {
+class MoviePagingSource(private val movieApiService: MovieApiService, private val application: Application, private val type: Int, private var movieName: String = ""): PagingSource<Int, Movie>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         try {
@@ -28,14 +28,17 @@ class MoviePagingSource(private val movieApiService: MovieApiService, private va
                             application.applicationContext.getString(R.string.api_key),
                             position
                         )
+
                         2 -> call = movieApiService.getTopRatedMovies(
                             application.applicationContext.getString(R.string.api_key),
                             position
                         )
+
                         3 -> call = movieApiService.getUpcomingMovies(
                             application.applicationContext.getString(R.string.api_key),
                             position
                         )
+
                         4 -> call = movieApiService.getNowPlayingMovies(
                             application.applicationContext.getString(R.string.api_key),
                             position
@@ -44,20 +47,27 @@ class MoviePagingSource(private val movieApiService: MovieApiService, private va
                     val response = call.execute()
                     if (response.isSuccessful) {
                         response.body() ?: Result(1, emptyList(), 1, 1)
-                    }
-                    else {
+                    } else {
                         Result(1, emptyList(), 1, 1)
                     }
-                }
-                catch (e: Exception) {
+                } catch (e: Exception) {
                     throw Exception("Error: ${e.message}")
                 }
             }
-            return LoadResult.Page(
-                data = result.results,
-                prevKey = if (position == 1) null else position - 1,
-                nextKey = if (position == result.totalPages) null else position + 1
-            )
+            return if (type != 3) {
+                    LoadResult.Page(
+                        data = result.results,
+                        prevKey = if (position == 1) null else position - 1,
+                        nextKey = if (position == result.totalPages) null else position + 1
+                    )
+                }
+                else {
+                    LoadResult.Page(
+                        data = result.results.filter { it.getVoteAverage() == "Unrated" },
+                        prevKey = if (position == 1) null else position - 1,
+                        nextKey = if (position == result.totalPages) null else position + 1
+                    )
+                }
         }
         catch (e: Exception) {
             return LoadResult.Error(e)

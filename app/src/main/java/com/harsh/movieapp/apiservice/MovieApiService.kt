@@ -17,4 +17,7 @@ interface MovieApiService {
 
     @GET("movie/now_playing")
     fun getNowPlayingMovies(@Query("api_key") apiKey: String, @Query("page") page: Int): Call<Result>
+
+    @GET("search/movie")
+    fun searchMovies(@Query("api_key") apiKey: String, @Query("query") movieName: String, @Query("page") page: Int): Call<Result>
 }
