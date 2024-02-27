@@ -32,7 +32,8 @@
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                    app:expandedTitleTextColor="@color/white">
                     <ImageView
                         android:id="@+id/mvPoster"
                         android:layout_width="match_parent"

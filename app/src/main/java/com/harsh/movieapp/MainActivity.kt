@@ -1,6 +1,7 @@
 package com.harsh.movieapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,7 +12,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.harsh.movieapp.databinding.ActivityMainBinding
@@ -36,10 +40,11 @@ class MainActivity : AppCompatActivity() {
 
         MobileAds.initialize(this) {
         }
-        val mAdViewBanner = mainBinding.adViewBanner
         val adRequest = AdRequest.Builder().build()
-        mAdViewBanner.loadAd(adRequest)
 
+        // Banner Ad
+        val mAdViewBanner = mainBinding.adViewBanner
+        mAdViewBanner.loadAd(adRequest)
 
         viewModel = ViewModelProvider(this)[MovieViewModel::class.java]
 
