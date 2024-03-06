@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Movie Database</string>
+    <string name="api_key">chal bhai apni use kar</string>
     <string name="image_poster">Image Poster</string>
     <string name="movie_title">Movie Title</string>
+    <string name="star_emoji">⭐</string>
     <string name="the_movie_database">The Movie Database</string>
     <string name="upcoming">Upcoming</string>
     <string name="popular">Popular</string>
     <string name="top_rated">Top Rated</string>
+    <string name="now_playing">Now Playing</string>
     <string name="rating">Rating</string>
     <string name="release_date">Release Date</string>
     <string name="adult">Adult</string>

@@ -46,8 +46,8 @@ class MovieLayout: BaseObservable() {
     }
 
     @Bindable
-    fun getAdult(): Boolean {
-        return adult
+    fun getAdult(): String {
+        return if (adult) "Yes" else "No"
     }
     fun setAdult(adult: Boolean) {
         this.adult = adult

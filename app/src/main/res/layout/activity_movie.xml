@@ -215,7 +215,7 @@
                                         android:layout_weight="1"
                                         android:padding="5dp"
                                         android:textColor="?android:attr/textColorSecondary"
-                                        android:text="@{movieLayout.adult ? String.valueOf(`Yes`) : String.valueOf(`No`)}" />
+                                        android:text="@{movieLayout.adult}" />
                                 </LinearLayout>
                                 <com.google.android.material.divider.MaterialDivider
                                     android:layout_width="match_parent"
